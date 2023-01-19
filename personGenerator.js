@@ -50,7 +50,41 @@ const personGenerator = {
             "id_10": "Елизавета"
         }
     }`,
-    
+    patronymicJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "Александр",
+            "id_2": "Максим",
+            "id_3": "Иван",
+            "id_4": "Артем",
+            "id_5": "Валентин",
+            "id_6": "Роман",
+            "id_7": "Родион",
+            "id_8": "Вячеслав",
+            "id_9": "Егор",
+            "id_10": "Олег"
+        }
+    }`,
+    professionMaleJson: `{
+        "count": 5,
+        "list": {     
+            "id_1": "Грузчик",
+            "id_2": "Певец",
+            "id_3": "Летчик",
+            "id_4": "Скрипач",
+            "id_5": "Уборщик"
+        }
+    }`,
+    professionFemaleJson: `{
+        "count": 5,
+        "list": {     
+            "id_1": "Уборщица",
+            "id_2": "Медсестра",
+            "id_3": "Швея",
+            "id_4": "Кладовщица",
+            "id_5": "Продавщица"
+        }
+    }`,
 
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
@@ -97,6 +131,24 @@ const personGenerator = {
 
     },
 
+    randomPatronymic: function() {
+
+        if (this.person.gender == this.GENDER_MALE) {
+            return this.randomValue(this.patronymicJson) +'ович';
+        } else {
+            return this.randomValue(this.patronymicJson) + 'овна';
+        };
+
+    },
+
+    randomProfession: function() {
+
+    if (this.person.gender == this.GENDER_MALE) {
+        return this.randomValue(this.professionMaleJson);
+    } else {
+        return this.randomValue(this.professionFemaleJson);
+    };
+},
 
     getPerson: function () {
         this.person = {};
@@ -104,6 +156,8 @@ const personGenerator = {
         this.person.surname = this.randomSurname();
         this.person.firstName = this.randomFirstName();
         this.person.birthYear = this.randomBirthYear();
+        this.person.patronymic = this.randomPatronymic();
+        this.person.profession = this.randomProfession();
         return this.person;
     }
 };
