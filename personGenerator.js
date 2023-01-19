@@ -35,6 +35,22 @@ const personGenerator = {
             "id_10": "Андрей"
         }
     }`,
+    firstNameFemaleJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "Мария",
+            "id_2": "Алина",
+            "id_3": "Екатерина",
+            "id_4": "Вера",
+            "id_5": "Надежда",
+            "id_6": "Любовь",
+            "id_7": "Юлия",
+            "id_8": "Эльвира",
+            "id_9": "Дарья",
+            "id_10": "Елизавета"
+        }
+    }`,
+    
 
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
@@ -47,24 +63,47 @@ const personGenerator = {
         return obj.list[prop];
     },
 
+    randomGender: function() {
+
+        return this.person.gender = this.randomIntNumber() === 1 ? this.GENDER_MALE : this.GENDER_FEMALE;
+
+    },
+
+    randomBirthYear: function() {
+
+        return this.person.birthYear = this.randomIntNumber(1950, 2023);
+         
+
+    },
+
     randomFirstName: function() {
 
-        return this.randomValue(this.firstNameMaleJson);
-
+        if (this.person.gender == this.GENDER_MALE) {
+            return this.randomValue(this.firstNameMaleJson);
+        } else {
+            return this.randomValue(this.firstNameFemaleJson);
+        };
+      
     },
 
 
      randomSurname: function() {
 
-        return this.randomValue(this.surnameJson);
+        if (this.person.gender == this.GENDER_MALE) {
+            return this.randomValue(this.surnameJson);
+        } else {
+            return this.randomValue(this.surnameJson) + 'а';
+        };
 
     },
 
 
     getPerson: function () {
         this.person = {};
-        // this.person.gender = this.randomGender();
+        this.person.gender = this.randomGender();
+        this.person.surname = this.randomSurname();
         this.person.firstName = this.randomFirstName();
+        this.person.birthYear = this.randomBirthYear();
         return this.person;
     }
 };
