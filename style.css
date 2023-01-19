@@ -1,0 +1,52 @@
+.game-card {
+    height: 100vh;
+    font-family: 'Open Sans', monospace;
+}
+
+body {
+    background: rgb(6, 6, 88);
+}
+
+.snow1{
+    background-image: url(snow1.png);
+    position:absolute;
+    width: 100%;
+    height:100%;
+    animation: snow1 18s linear infinite;    
+ }
+
+ .snow2{
+    background-image: url(snow2.png),url(snow3.png);
+    animation: snow2 10s linear infinite;
+    width: 100%;
+    height:100%;
+    position:absolute;
+ }
+
+ @keyframes snow2{
+    0%{background-position: 0 0, 0 0;}
+    100%{background-position: 10% 600px, 10% 600px;}
+}
+@keyframes snow1{
+    from{background-position: 0 -300px;}
+    20% {background-position: 20% -100px;}
+    40% {background-position: 30% 100px;}
+    to{background-position: 20% 700px;}
+}
+
+.card-header {
+    background: rgb(226, 8, 8);
+}
+
+.m-0 {
+    color: beige;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px black;
+    border-color: whitesmoke;
+}
+
+.card-body {
+    background: green;
+    color: beige;
+    text-shadow: 1px 1px 2px black;
+}
